@@ -1,4 +1,4 @@
-package com.delingsapp;
+package no.delings.app;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactPackage;
