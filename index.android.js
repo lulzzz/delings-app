@@ -8,13 +8,25 @@ import React, {
   Component,
   StyleSheet,
   Text,
+  Image,
   View
 } from 'react-native';
+
+import MessengerAndroid from './components/MessengerAndroid';
+
+/*
+MessengerAndroid.shareToMessenger(
+    'http://www.visionlearning.com/blog/wp-content/uploads/2015/09/ezgif.com-optimize.gif',
+    MessengerAndroid.IMAGE_GIF,
+    '{ "image" : "space cat" }'
+);
+*/
 
 class DelingsApp extends Component {
   render() {
     return (
       <View style={styles.container}>
+          <Image source={{uri: 'spacecat'}} style={{width: 576, height: 318}} />
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>
