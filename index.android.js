@@ -10,9 +10,10 @@ import React, {
   Text,
   Image,
   View
-} from 'react-native';
+} from 'react-native'
 
-import MessengerAndroid from './components/MessengerAndroid';
+import FBMessenger from './components/facebook/FBMessenger'
+import Login from './components/login/Login'
 
 /*
 MessengerAndroid.shareToMessenger(
@@ -25,19 +26,8 @@ MessengerAndroid.shareToMessenger(
 class DelingsApp extends Component {
   render() {
     return (
-      <View style={styles.container}>
-          <Image source={{uri: 'spacecat'}} style={{width: 576, height: 318}} />
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      <Login/>
+    )
   }
 }
 

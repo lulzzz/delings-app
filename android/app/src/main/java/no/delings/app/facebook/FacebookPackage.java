@@ -1,6 +1,4 @@
-package no.delings.app;
-
-import no.delings.app.modules.MessengerModule;
+package no.delings.app.facebook;
 
 import android.app.Activity;
 import com.facebook.react.ReactPackage;
@@ -13,26 +11,23 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-class DelingsPackage implements ReactPackage {
-
-    private final Activity activity;
-
-    public DelingsPackage(Activity activity) {
-        this.activity = activity;
-    }
+public class FacebookPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(
-                                ReactApplicationContext reactContext) {
+            ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-            new MessengerModule(reactContext, activity)
+            new LoginModule(reactContext),
+            new MessengerModule(reactContext)
         );
     }
 
     @Override
     public List<ViewManager> createViewManagers(
-                                ReactApplicationContext reactContext) {
-        return Collections.emptyList();
+            ReactApplicationContext reactContext) {
+        return Arrays.<ViewManager>asList(
+            new LoginButtonManager()
+        );
     }
 
     @Override

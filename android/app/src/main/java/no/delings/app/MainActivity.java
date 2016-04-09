@@ -1,6 +1,6 @@
 package no.delings.app;
 
-import no.delings.app.DelingsPackage;
+import no.delings.app.facebook.FacebookPackage;
 
 import android.os.Bundle;
 
@@ -41,7 +41,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
-            new DelingsPackage(this)
+            new FacebookPackage()
         );
     }
 
