@@ -1,19 +1,14 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- */
-
 import React, {
   AppRegistry,
   Component,
   StyleSheet,
   Text,
   Image,
-  View
+  View,
 } from 'react-native'
 
 import FBMessenger from './components/facebook/FBMessenger'
-import Login from './components/login/Login'
+import LoginView from './components/login/LoginView'
 
 /*
 MessengerAndroid.shareToMessenger(
@@ -26,7 +21,7 @@ MessengerAndroid.shareToMessenger(
 class DelingsApp extends Component {
   render() {
     return (
-      <Login/>
+      <LoginView/>
     )
   }
 }
@@ -34,20 +29,7 @@ class DelingsApp extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+})
 
-AppRegistry.registerComponent('DelingsApp', () => DelingsApp);
+AppRegistry.registerComponent('DelingsApp', () => DelingsApp)
