@@ -17,9 +17,11 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class LoginModule extends ReactContextBaseJavaModule
         implements ActivityEventListener {
@@ -71,49 +73,86 @@ public class LoginModule extends ReactContextBaseJavaModule
             return;
         }
 
-        LoginManager.getInstance().registerCallback(callbackManager,
-                new FacebookCallback<LoginResult>() {
-
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Profile profile = Profile.getCurrentProfile();
-                promise.resolve("Hei, " + profile.getFirstName() + "!");
-            }
-
-            @Override
-            public void onCancel() {
-                promise.resolve("login cancelled");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                promise.reject(exception);
-            }
-        });
-
-        this.logInWithReadPermissions();
+        registerLoginCallback(promise);
+        logInWithReadPermissions(Arrays.asList(
+            getConstants().get(PERMISSION_PROFILE)
+        ));
     }
 
     @ReactMethod
-    public void logInWithPermissions(
+    public void logInWithReadPermissions(
             final ReadableArray permissions,
             final Promise promise) {
-        //
+        registerLoginCallback(promise);
+        logInWithReadPermissions(getPermissionsAsList(permissions));
     }
 
-    private void logInWithReadPermissions() {
+    @ReactMethod
+    public void logInWithPublishPermissions(
+            final ReadableArray permissions,
+            final Promise promise) {
+        registerLoginCallback(promise);
+        logInWithPublishPermissions(getPermissionsAsList(permissions));
+    }
+
+    @ReactMethod
+    public void logOut(final Promise promise) {
+        LoginManager.getInstance().logOut();
+        promise.resolve("Du er nå logget ut");
+    }
+
+    private void registerLoginCallback(final Promise promise) {
+      LoginManager.getInstance().registerCallback(callbackManager,
+              new FacebookCallback<LoginResult>() {
+
+          @Override
+          public void onSuccess(LoginResult loginResult) {
+              try {
+                  Profile profile = Profile.getCurrentProfile();
+                  promise.resolve("Hei, " + profile.getFirstName() + "!");
+              } catch (Exception exception) {
+                  promise.reject(exception);
+              }
+          }
+
+          @Override
+          public void onCancel() {
+              promise.resolve("login cancelled");
+          }
+
+          @Override
+          public void onError(FacebookException exception) {
+              promise.reject(exception);
+          }
+      });
+    }
+
+    private List<String> getPermissionsAsList(ReadableArray permissions) {
+        List<String> permissionsList = new ArrayList<String>();
+        if (permissions != null && permissions.size() > 0) {
+            for (int i = 0; i < permissions.size(); i++) {
+                if (permissions.getType(i).name() == "String") {
+                    String permission = permissions.getString(i);
+                    permissionsList.add(permission);
+                }
+            }
+        }
+        return permissionsList;
+    }
+
+    private void logInWithReadPermissions(List permissions) {
         Activity currentActivity = getCurrentActivity();
 
         LoginManager.getInstance().logInWithReadPermissions(
             currentActivity,
-            Arrays.asList("public_profile"));
+            permissions);
     }
 
-    private void logInWithPublishPermissions() {
+    private void logInWithPublishPermissions(List permissions) {
         Activity currentActivity = getCurrentActivity();
 
         LoginManager.getInstance().logInWithPublishPermissions(
             currentActivity,
-            Arrays.asList("publish_actions"));
+            permissions);
     }
 }

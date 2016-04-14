@@ -16,16 +16,12 @@ class LoginView extends Component {
     FBLogin.logIn()
       .then(value => ToastAndroid.show(value, ToastAndroid.LONG))
       .catch(error => ToastAndroid.show(error.message, ToastAndroid.LONG))
-
-    // try {
-    //     const value = await FBLogin.logIn()
-    //     ToastAndroid.show(value, ToastAndroid.LONG)
-    // } catch (error) {
-    //     ToastAndroid.show(error.message, ToastAndroid.LONG)
-    // }
   }
 
-  handleSkipPress() {}
+  handleSkipPress() {
+    FBLogin.logOut()
+      .then(value => ToastAndroid.show(value, ToastAndroid.LONG))
+  }
 
   render() {
     return(
@@ -40,14 +36,18 @@ class LoginView extends Component {
         </View>
         <View style={styles.actionsContainer}>
           <Button handleButtonPress={this.handleLoginPress}
-            text='Logg inn med Facebook'
-            />
+              color='#4267B2'
+              icon={require('./img/fb-logo-white.png')}
+              raised>
+            Logg inn med Facebook
+          </Button>
           <Text style={styles.info}>
-            Vi gir ikke bort informasjon om deg til andre.
+            Vi deler ikke informasjon om deg med andre.
           </Text>
-          <Text style={styles.link}>
+          <Button handleButtonPress={this.handleSkipPress}
+              color='#FFF'>
             Fortsett uten å logge inn
-          </Text>
+          </Button>
         </View>
       </View>
     )
@@ -57,7 +57,7 @@ class LoginView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(71, 191, 236)'
+    backgroundColor: 'rgb(71, 191, 236)',
   },
   logoContainer: {
     flex: 1,
@@ -89,14 +89,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
     color: 'rgba(255,255,255,0.70)',
-  },
-  link: {
-    marginVertical: 10,
-    marginHorizontal: 20,
-    textAlign: 'center',
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#FFF',
   },
 })
 

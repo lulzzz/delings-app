@@ -21,7 +21,7 @@ MessengerAndroid.shareToMessenger(
 class DelingsApp extends Component {
   render() {
     return (
-      <LoginView/>
+      <LoginView style={styles.container}/>
     )
   }
 }

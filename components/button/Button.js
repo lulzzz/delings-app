@@ -4,45 +4,78 @@ import React, {
   TouchableOpacity,
   Image,
   Text,
+  View
 } from 'react-native'
 
-const Button = ({ text, handleButtonPress }) => (
-    <TouchableOpacity style={styles.button} onPress={handleButtonPress}>
-      <Image style={styles.buttonIcon}
-        source={require('../login/img/fb-logo-white.png')}/>
-      <Text style={styles.buttonText}>{text}</Text>
+const Button = props => {
+  const { icon, color, raised, disabled, handleButtonPress } = props
+
+  const buttonColor = color
+                        ? raised
+                            ? color
+                            : 'transparent'
+                        : 'rgba(158,158,158,0.2)'
+
+  const textColor = color
+                      ? raised
+                          ? '#FFF'
+                          : color
+                      : '#000'
+
+  return (
+    <TouchableOpacity onPress={handleButtonPress}
+      style={styles.touchableTarget}>
+      <View style={[
+          styles.button,
+          {backgroundColor: buttonColor},
+          raised && styles.buttonRaised,
+          icon && styles.buttonIcon,
+        ]}>
+        <Image style={styles.icon} source={icon}/>
+        <Text style={[
+            styles.text,
+            {color: textColor},
+          ]}>{props.children}</Text>
+      </View>
     </TouchableOpacity>
-)
+  )
+}
 
 const styles = StyleSheet.create({
+  touchableTarget: {
+    padding: 8,
+  },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 10,
-    marginHorizontal: 20,
-    backgroundColor: '#4267B2',
-    borderRadius: 2,
+    height: 36,
+    paddingHorizontal: 8,
   },
-  activeButton: {
-    backgroundColor: 'transparent',
-    borderColor: 'rgb(235,52,83)',
-    borderWidth: StyleSheet.hairlineWidth,
+  buttonRaised: {
+    borderRadius: 2,
+    elevation: 2,
+    paddingHorizontal: 16,
   },
   buttonIcon: {
-    margin: 5,
+    paddingLeft: 0,
   },
-  buttonText: {
-    marginVertical: 5,
-    marginLeft: 5,
-    marginRight: 10,
-    fontSize: 16,
+  icon: {
+    height: 24,
+    width: 24,
+    margin: 8,
+  },
+  text: {
+    fontSize: 14,
     fontWeight: 'bold',
     color: '#FFF',
-  },
+  }
 })
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  icon: PropTypes.number,
+  color: PropTypes.string,
+  raised: PropTypes.bool,
+  disabled: PropTypes.bool,
   handleButtonPress: PropTypes.func.isRequired,
 }
 
