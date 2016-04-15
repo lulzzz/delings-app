@@ -7,15 +7,18 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.react.bridge.ActivityEventListener;
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.WritableMap;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,7 +72,7 @@ public class LoginModule extends ReactContextBaseJavaModule
 
         if (accessToken != null) {
             Profile profile = Profile.getCurrentProfile();
-            promise.resolve("Hei, " + profile.getFirstName() + "!");
+            promise.resolve(getProfileAsMap(profile));
             return;
         }
 
@@ -102,29 +105,37 @@ public class LoginModule extends ReactContextBaseJavaModule
     }
 
     private void registerLoginCallback(final Promise promise) {
-      LoginManager.getInstance().registerCallback(callbackManager,
-              new FacebookCallback<LoginResult>() {
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
 
-          @Override
-          public void onSuccess(LoginResult loginResult) {
-              try {
-                  Profile profile = Profile.getCurrentProfile();
-                  promise.resolve("Hei, " + profile.getFirstName() + "!");
-              } catch (Exception exception) {
-                  promise.reject(exception);
-              }
-          }
+            private ProfileTracker profileTracker;
 
-          @Override
-          public void onCancel() {
-              promise.resolve("login cancelled");
-          }
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                profileTracker = new ProfileTracker() {
+                    @Override
+                    protected void onCurrentProfileChanged(
+                            Profile oldProfile,
+                            Profile currentProfile) {
+                        if (currentProfile != null) {
+                            promise.resolve(getProfileAsMap(currentProfile));
+                        }
+                        // Will not be called when re-confirming current login!
+                        this.stopTracking();
+                    }
+                };
+            }
 
-          @Override
-          public void onError(FacebookException exception) {
-              promise.reject(exception);
-          }
-      });
+            @Override
+            public void onCancel() {
+                promise.resolve("login cancelled");
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                promise.reject(exception);
+            }
+        });
     }
 
     private List<String> getPermissionsAsList(ReadableArray permissions) {
@@ -138,6 +149,19 @@ public class LoginModule extends ReactContextBaseJavaModule
             }
         }
         return permissionsList;
+    }
+
+    private WritableMap getProfileAsMap(Profile profile) {
+        final WritableMap profileMap = Arguments.createMap();
+        if (profile != null) {
+            profileMap.putString("id", profile.getId());
+            profileMap.putString("first_name", profile.getFirstName());
+            profileMap.putString("middle_name", profile.getMiddleName());
+            profileMap.putString("last_name", profile.getLastName());
+            profileMap.putString("name", profile.getName());
+            profileMap.putString("link_uri", profile.getLinkUri().toString());
+        }
+        return profileMap;
     }
 
     private void logInWithReadPermissions(List permissions) {

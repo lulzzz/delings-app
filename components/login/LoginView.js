@@ -14,7 +14,7 @@ class LoginView extends Component {
 
   handleLoginPress() {
     FBLogin.logIn()
-      .then(value => ToastAndroid.show(value, ToastAndroid.LONG))
+      .then(profile => ToastAndroid.show(`Hei, ${profile['first_name']}!`, ToastAndroid.LONG))
       .catch(error => ToastAndroid.show(error.message, ToastAndroid.LONG))
   }
 
