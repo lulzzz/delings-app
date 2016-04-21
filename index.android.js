@@ -5,30 +5,21 @@ import React, {
   Text,
   Image,
   View,
+  Navigator,
+  ToolbarAndroid,
 } from 'react-native'
 
-import FBMessenger from './components/facebook/FBMessenger'
-import LoginView from './components/login/LoginView'
+import routes from './routes'
 
-/*
-MessengerAndroid.shareToMessenger(
-    'http://www.visionlearning.com/blog/wp-content/uploads/2015/09/ezgif.com-optimize.gif',
-    MessengerAndroid.IMAGE_GIF,
-    '{ "image" : "space cat" }'
-);
-*/
-
-class DelingsApp extends Component {
-  render() {
-    return (
-      <LoginView style={styles.container}/>
-    )
-  }
-}
+const DelingsApp = () => (
+  <Navigator style={styles.container}
+      initialRoute={routes.initialRoute}
+      renderScene={routes.renderScene}
+    />
+)
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
   },
 })
 

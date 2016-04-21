@@ -12,19 +12,23 @@ import FBLogin from '../facebook/FBLogin'
 
 class LoginView extends Component {
 
-  handleLoginPress() {
-    FBLogin.logIn()
-      .then(profile => ToastAndroid.show(`Hei, ${profile['first_name']}!`, ToastAndroid.LONG))
-      .catch(error => ToastAndroid.show(error.message, ToastAndroid.LONG))
+  async handleLoginPress() {
+    try {
+      const profile = await FBLogin.logIn()
+      ToastAndroid.show(`Hei, ${profile['first_name']}!`, ToastAndroid.LONG)
+    } catch (error) {
+      ToastAndroid.show(error.message, ToastAndroid.LONG)
+    }
   }
 
-  handleSkipPress() {
-    FBLogin.logOut()
-      .then(value => ToastAndroid.show(value, ToastAndroid.LONG))
+  async handleSkipPress() {
+    // const value = await FBLogin.logOut()
+    // ToastAndroid.show(value, ToastAndroid.LONG)
+    this.props.navigator.push({ name: 'Gallery' })
   }
 
   render() {
-    return(
+    return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('./img/delings-logo.png')}/>
@@ -35,7 +39,7 @@ class LoginView extends Component {
           </Text>
         </View>
         <View style={styles.actionsContainer}>
-          <Button handleButtonPress={this.handleLoginPress}
+          <Button handleButtonPress={this.handleLoginPress.bind(this)}
               color='#4267B2'
               icon={require('./img/fb-logo-white.png')}
               raised>
@@ -44,7 +48,7 @@ class LoginView extends Component {
           <Text style={styles.info}>
             Vi deler ikke informasjon om deg med andre.
           </Text>
-          <Button handleButtonPress={this.handleSkipPress}
+          <Button handleButtonPress={this.handleSkipPress.bind(this)}
               color='#FFF'>
             Fortsett uten å logge inn
           </Button>
@@ -70,7 +74,6 @@ const styles = StyleSheet.create({
   },
   taglineContainer: {
     flex: 1,
-    alignItems: 'center',
   },
   tagline: {
     marginVertical: 10,

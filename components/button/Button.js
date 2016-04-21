@@ -22,16 +22,18 @@ const Button = props => {
                           : color
                       : '#000'
 
+  const iconComponent = icon ? <Image style={styles.icon} source={icon}/> : null
+
   return (
     <TouchableOpacity onPress={handleButtonPress}
       style={styles.touchableTarget}>
       <View style={[
           styles.button,
-          {backgroundColor: buttonColor},
           raised && styles.buttonRaised,
           icon && styles.buttonIcon,
+          {backgroundColor: buttonColor},
         ]}>
-        <Image style={styles.icon} source={icon}/>
+        {iconComponent}
         <Text style={[
             styles.text,
             {color: textColor},
