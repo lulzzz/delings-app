@@ -6,6 +6,7 @@ import android.net.Uri;
 import com.facebook.messenger.MessengerUtils;
 import com.facebook.messenger.MessengerThreadParams;
 import com.facebook.messenger.ShareToMessengerParams;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
@@ -72,10 +73,12 @@ public class MessengerModule extends ReactContextBaseJavaModule {
     public void shareToMessenger(
             final String contentUri,
             final String mimeType,
-            final String metadata) {
+            final String metadata,
+            final Promise promise) {
 
         // contentUri points to the content being shared to Messenger
-        Uri uri = Uri.parse(contentUri);
+        String selfPackageName = getReactApplicationContext().getPackageName();
+        Uri uri = Uri.parse("android.resource://" + selfPackageName + "/" + contentUri);
 
         ShareToMessengerParams shareToMessengerParams =
             ShareToMessengerParams.newBuilder(uri, mimeType)

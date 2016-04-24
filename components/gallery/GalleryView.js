@@ -15,26 +15,6 @@ class GalleryView extends Component {
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
-
-    var resolveAssetSource = require('resolveAssetSource')
-    var source = resolveAssetSource(categories[0].image)
-    console.warn(source.uri)
-
-    const AssetRegistry = require('AssetRegistry')
-    var asset = AssetRegistry.getAssetByID(categories[0].image);
-    console.warn(asset.fileSystemLocation)
-    console.warn(asset.httpServerLocation)
-    console.warn(asset.name + '.' + asset.type)
-
-    const { SourceCode } = require('NativeModules')
-    console.warn(SourceCode.scriptURL)
-
-    var assetPathUtils = require('../../react-native/local-cli/bundle/assetPathUtils');
-
-    const AssetSourceResolver = require('AssetSourceResolver')
-    const resolver = new AssetSourceResolver('', SourceCode.scriptURL, asset)
-    console.warn(AssetSourceResolver.drawableFolderInBundle())
-    console.warn(AssetSourceResolver.scaledAssetPathInBundle())
   }
 
   renderItem(itemProps, id, windowWidth) {
