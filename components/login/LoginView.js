@@ -7,7 +7,8 @@ import React, {
   ToastAndroid,
 } from 'react-native'
 
-import Button from '../button/Button'
+import RaisedButton from '../button/RaisedButton'
+import FlatButton from '../button/FlatButton'
 import FBLogin from '../facebook/FBLogin'
 
 class LoginView extends Component {
@@ -39,19 +40,18 @@ class LoginView extends Component {
           </Text>
         </View>
         <View style={styles.actionsContainer}>
-          <Button handleButtonPress={this.handleLoginPress.bind(this)}
+          <RaisedButton handleButtonPress={this.handleLoginPress.bind(this)}
               color='#4267B2'
-              icon={require('./img/fb-logo-white.png')}
-              raised>
+              icon={require('./img/fb-logo-white.png')}>
             Logg inn med Facebook
-          </Button>
+          </RaisedButton>
           <Text style={styles.info}>
             Vi deler ikke informasjon om deg med andre.
           </Text>
-          <Button handleButtonPress={this.handleSkipPress.bind(this)}
+          <FlatButton handleButtonPress={this.handleSkipPress.bind(this)}
               color='#FFF'>
             Fortsett uten å logge inn
-          </Button>
+          </FlatButton>
         </View>
       </View>
     )

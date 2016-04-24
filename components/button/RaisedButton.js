@@ -7,20 +7,20 @@ import React, {
   View
 } from 'react-native'
 
-const Button = props => {
-  const { icon, color, raised, disabled, handleButtonPress } = props
+const RaisedButton = props => {
+  const { icon, color, disabled, handleButtonPress } = props
 
-  const buttonColor = color
-                        ? raised
-                            ? color
-                            : 'transparent'
-                        : 'rgba(158,158,158,0.2)'
+  const backgroundColor = disabled
+                            ? 'rgba(0,0,0,0.12)'
+                            : color
+                                ? color
+                                : 'rgba(158,158,158,0.2)'
 
-  const textColor = color
-                      ? raised
+  const textColor = disabled
+                      ? 'rgba(0,0,0,0.26)'
+                      : color
                           ? '#FFF'
-                          : color
-                      : '#000'
+                          : '#000'
 
   const iconComponent = icon ? <Image style={styles.icon} source={icon}/> : null
 
@@ -29,9 +29,8 @@ const Button = props => {
       style={styles.touchableTarget}>
       <View style={[
           styles.button,
-          raised && styles.buttonRaised,
           icon && styles.buttonIcon,
-          {backgroundColor: buttonColor},
+          {backgroundColor},
         ]}>
         {iconComponent}
         <Text style={[
@@ -51,9 +50,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: 36,
-    paddingHorizontal: 8,
-  },
-  buttonRaised: {
     borderRadius: 2,
     elevation: 2,
     paddingHorizontal: 16,
@@ -69,16 +65,14 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 14,
     fontWeight: 'bold',
-    color: '#FFF',
   }
 })
 
-Button.propTypes = {
+RaisedButton.propTypes = {
   icon: PropTypes.number,
   color: PropTypes.string,
-  raised: PropTypes.bool,
   disabled: PropTypes.bool,
   handleButtonPress: PropTypes.func.isRequired,
 }
 
-export default Button
+export default RaisedButton
