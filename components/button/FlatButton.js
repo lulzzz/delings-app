@@ -7,16 +7,18 @@ import React, {
   View
 } from 'react-native'
 
+import cssVar from '../../cssVar'
+
 const FlatButton = props => {
   const { icon, color, disabled, handleButtonPress } = props
 
   const backgroundColor = 'transparent'
 
   const textColor = disabled
-                      ? 'rgba(0,0,0,0.26)'
+                      ? 'rgba(0,0,0,0.26)' //cssVar('textColorDisabled')
                       : color
                           ? color
-                          : '#000'
+                          : cssVar('textColorPrimary')
 
   const iconComponent = icon ? <Image style={styles.icon} source={icon}/> : null
 

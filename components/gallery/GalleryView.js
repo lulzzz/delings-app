@@ -5,9 +5,11 @@ import React, {
   View,
   ScrollView,
   Dimensions,
-  ImageEditor,
+  StatusBar,
+  ToolbarAndroid,
 } from 'react-native'
 
+import NavigationBar from '../navigation/NavigationBar'
 import GalleryItem from './GalleryItem'
 
 class GalleryView extends Component {
@@ -15,6 +17,16 @@ class GalleryView extends Component {
   constructor(props) {
     super(props)
     this.renderItem = this.renderItem.bind(this)
+  }
+
+  handleActionSelected(position) {
+    switch (position) {
+      case 0:
+        //logOut
+        break;
+      default:
+        //do nothing
+    }
   }
 
   renderItem(itemProps, id, windowWidth) {
@@ -30,15 +42,19 @@ class GalleryView extends Component {
     const { height, width } = Dimensions.get('window');
 
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.header}>
-          <Text style={styles.heading}>Hva trenger du?</Text>
-          <Text style={styles.subheading}>Si det med et bilde.</Text>
-        </View>
-        <View style={styles.categories}>
-          {categories.map((item, i) => this.renderItem(item, i, width))}
-        </View>
-      </ScrollView>
+      <View style={styles.container}>
+        <StatusBar hidden={false}/>
+        <NavigationBar title='Delings'/>
+        <ScrollView>
+          <View style={styles.header}>
+            <Text style={styles.heading}>Hva trenger du?</Text>
+            <Text style={styles.subheading}>Si det med et bilde.</Text>
+          </View>
+          <View style={styles.categories}>
+            {categories.map((item, i) => this.renderItem(item, i, width))}
+          </View>
+        </ScrollView>
+      </View>
     )
   }
 }

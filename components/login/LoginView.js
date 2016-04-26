@@ -5,11 +5,14 @@ import React, {
   Image,
   View,
   ToastAndroid,
+  StatusBar,
 } from 'react-native'
 
 import RaisedButton from '../button/RaisedButton'
 import FlatButton from '../button/FlatButton'
 import FBLogin from '../facebook/FBLogin'
+
+import cssVar from '../../cssVar'
 
 class LoginView extends Component {
 
@@ -31,6 +34,7 @@ class LoginView extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar hidden={true}/>
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('./img/delings-logo.png')}/>
         </View>
@@ -61,7 +65,7 @@ class LoginView extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'rgb(71, 191, 236)',
+    backgroundColor: cssVar('colorPrimary'),
   },
   logoContainer: {
     flex: 1,
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     textAlign: 'center',
     fontSize: 25,
-    color: '#FFF',
+    color: cssVar('textColorPrimaryLight'),
   },
   actionsContainer: {
     flex: 1,
@@ -91,7 +95,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     textAlign: 'center',
     fontSize: 14,
-    color: 'rgba(255,255,255,0.70)',
+    color: cssVar('textColorSecondaryLight'),
   },
 })
 

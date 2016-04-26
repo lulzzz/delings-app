@@ -7,6 +7,8 @@ import React, {
   View
 } from 'react-native'
 
+import cssVar from '../../cssVar'
+
 const RaisedButton = props => {
   const { icon, color, disabled, handleButtonPress } = props
 
@@ -17,10 +19,10 @@ const RaisedButton = props => {
                                 : 'rgba(158,158,158,0.2)'
 
   const textColor = disabled
-                      ? 'rgba(0,0,0,0.26)'
+                      ? 'rgba(0,0,0,0.26)' //cssVar('textColorDisabled')
                       : color
                           ? '#FFF'
-                          : '#000'
+                          : cssVar('textColorPrimary')
 
   const iconComponent = icon ? <Image style={styles.icon} source={icon}/> : null
 

@@ -8,7 +8,7 @@ import React, {
 
 const GalleryItem = ({ name, image, width, handleItemPress }) => (
   <Image source={image}
-      resizeMode='cover'
+      resizeMode={Image.resizeMode.cover}
       style={[
         styles.thumb,
         {

@@ -7,6 +7,8 @@ import React, {
   View
 } from 'react-native'
 
+import cssVar from '../../cssVar'
+
 const FloatingActionButton = props => {
   const { icon, color, disabled, mini, handleButtonPress } = props
 
@@ -17,10 +19,10 @@ const FloatingActionButton = props => {
                                 : 'rgba(158,158,158,0.2)'
 
   const textColor = disabled
-                      ? 'rgba(0,0,0,0.26)'
+                      ? 'rgba(0,0,0,0.26)' //cssVar('textColorDisabled')
                       : color
                           ? '#FFF'
-                          : '#000'
+                          : cssVar('textColorPrimary')
 
   return (
     <TouchableOpacity onPress={handleButtonPress}
@@ -41,6 +43,7 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   button: {
+    justifyContent: 'center',
     alignItems: 'center',
     width: 56,
     height: 56,

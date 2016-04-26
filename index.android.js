@@ -6,20 +6,25 @@ import React, {
   Image,
   View,
   Navigator,
-  ToolbarAndroid,
+  StatusBar,
 } from 'react-native'
 
 import routes from './routes'
+import cssVar from './cssVar'
 
 const DelingsApp = () => (
-  <Navigator style={styles.container}
-      initialRoute={routes.initialRoute}
-      renderScene={routes.renderScene}
-    />
+  <View style={styles.container}>
+    <StatusBar backgroundColor={cssVar('colorPrimaryDark')}/>
+    <Navigator
+        initialRoute={routes.initialRoute}
+        renderScene={routes.renderScene}
+      />
+  </View>
 )
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
   },
 })
 
