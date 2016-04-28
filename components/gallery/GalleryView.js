@@ -9,7 +9,7 @@ import React, {
   ToolbarAndroid,
 } from 'react-native'
 
-import NavigationBar from '../navigation/NavigationBar'
+import Toolbar from '../navigation/Toolbar'
 import GalleryItem from './GalleryItem'
 import cssVar from '../../cssVar'
 
@@ -44,7 +44,7 @@ class GalleryView extends Component {
 
     return (
       <View style={styles.container}>
-        <NavigationBar title='Delings'/>
+        <Toolbar title='Delings'/>
         <ScrollView style={styles.list}>
           <View style={styles.header}>
             <Text style={styles.title}>Hva trenger du?</Text>

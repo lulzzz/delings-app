@@ -87,6 +87,7 @@ public class LoginModule extends ReactContextBaseJavaModule
             final ReadableArray permissions,
             final Promise promise) {
         registerLoginCallback(promise);
+        // logInWithReadPermissions(permissions.toArrayList());
         logInWithReadPermissions(getPermissionsAsList(permissions));
     }
 
@@ -95,6 +96,7 @@ public class LoginModule extends ReactContextBaseJavaModule
             final ReadableArray permissions,
             final Promise promise) {
         registerLoginCallback(promise);
+        // logInWithPublishPermissions(permissions.toArrayList());
         logInWithPublishPermissions(getPermissionsAsList(permissions));
     }
 

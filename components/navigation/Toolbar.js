@@ -19,7 +19,7 @@ const handleActionSelected = position => {
   }
 }
 
-const NavigationBar = props => {
+const Toolbar = props => {
 
   const navIcon = props.navIcon
                     ? require('./img/ic_arrow_back_white.png')
@@ -48,9 +48,9 @@ const styles = StyleSheet.create({
   },
 })
 
-NavigationBar.propTypes = {
+Toolbar.propTypes = {
   title: PropTypes.string,
   navIcon: PropTypes.bool,
 }
 
-export default NavigationBar
+export default Toolbar

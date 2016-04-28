@@ -7,7 +7,7 @@ import React, {
   Dimensions,
 } from 'react-native'
 
-import NavigationBar from '../navigation/NavigationBar'
+import Toolbar from '../navigation/Toolbar'
 import FloatingActionButton from '../button/FloatingActionButton'
 import FBMessenger from '../facebook/FBMessenger'
 import cssVar from '../../cssVar'
@@ -34,7 +34,7 @@ class SendMessageView extends Component {
 
     return (
       <View style={styles.container}>
-        <NavigationBar title='Send melding' navIcon={true}/>
+        <Toolbar title='Send melding' navIcon={true}/>
         <Image source={this.props.image} style={{width: width, height: width}}/>
         <View style={styles.caption}>
           <Text style={styles.title}>
