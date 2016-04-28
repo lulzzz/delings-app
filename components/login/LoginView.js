@@ -34,7 +34,7 @@ class LoginView extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.logoContainer}>
-          <Image style={styles.logo} source={require('./img/delings-logo.png')}/>
+          <Image style={styles.logo} source={require('./img/delings-logo-transparent.png')}/>
         </View>
         <View style={styles.taglineContainer}>
           <Text style={styles.tagline}>
