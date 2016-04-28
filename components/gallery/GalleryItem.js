@@ -6,6 +6,8 @@ import React, {
   TouchableOpacity,
 } from 'react-native'
 
+import cssVar from '../../cssVar'
+
 const GalleryItem = ({ name, image, width, handleItemPress }) => (
   <Image source={image}
       resizeMode={Image.resizeMode.cover}
@@ -38,8 +40,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.2)',
   },
   label: {
-    color: '#FFF',
-    fontSize: 16,
+    color: cssVar('textColorPrimaryLight'),
+    ...cssVar('fontSubheading'),
   },
 })
 

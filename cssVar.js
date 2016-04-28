@@ -4,18 +4,18 @@ import React, {
 } from 'react-native'
 
 const cssVarConfig = {
-  colorPrimary: 'rgb(73,188,234)',
-  colorPrimaryDark: 'rgb(73,188,234)',
-  colorPrimaryLight: 'rgb(73,188,234)',
-  // colorPrimary: 'rgb(34,41,67)',
-  // colorPrimaryDark: '',
-  // colorPrimaryLight: '',
-  colorAccent: 'rgb(235,56,83)',
+  // colorPrimary: 'rgb(73,188,234)', // #49BCEA
+  // colorPrimaryDark: 'rgb(73,188,234)',
+  // colorPrimaryLight: 'rgb(73,188,234)',
+  colorPrimary: 'rgb(34,41,67)', // #222943
+  colorPrimaryDark: 'rgb(34,41,67)',
+  colorPrimaryLight: 'rgb(34,41,67)',
+  colorAccent: 'rgb(235,56,83)', // #EB3853
   colorAccentDark: 'rgb(235,56,83)',
   colorAccentLight: 'rgb(235,56,83)',
   // colorAccent: 'rgb(217,222,69)',
-  // colorAccentDark: '',
-  // colorAccentLight: '',
+  // colorAccentDark: 'rgb(217,222,69)',
+  // colorAccentLight: 'rgb(217,222,69)',
   textColorPrimary: 'rgba(0,0,0,0.87)',
   textColorPrimaryLight: 'rgb(255,255,255)',
   textColorSecondary: 'rgba(0,0,0,0.54)',
@@ -38,6 +38,63 @@ const cssVarConfig = {
     //height: 1 / PixelRatio.get(), // thinnest possible line
     height: StyleSheet.hairlineWidth,
   },
+  fontDisplay4: {
+    fontSize: 112,
+    fontWeight: '100',
+  },
+  fontDisplay3: {
+    fontSize: 56,
+    fontWeight: '400',
+  },
+  fontDisplay2: {
+    fontSize: 45,
+    fontWeight: '400',
+    lineHeight: 48,
+  },
+  fontDisplay1: {
+    fontSize: 34,
+    fontWeight: '400',
+    lineHeight: 40,
+  },
+  fontHeadline: {
+    fontSize: 24,
+    fontWeight: '400',
+    lineHeight: 32,
+  },
+  fontTitle: {
+    fontSize: 20,
+    fontWeight: '500',
+    lineHeight: 28,
+  },
+  fontSubheading: {
+    fontSize: 16,
+    fontWeight: '400',
+    lineHeight: 24,
+  },
+  fontBody2: {
+    fontSize: 14,
+    fontWeight: '500',
+    lineHeight: 24,
+  },
+  fontBody1: {
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 20,
+  },
+  fontCaption: {
+    fontSize: 12,
+    fontWeight: '400',
+  },
+  fontButton: {
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  fontWeightThin: '100',
+  fontWeightLight: '300',
+  fontWeightRegular: '400',
+  fontWeightMedium: '500',
+  fontWeightBold: '700',
+  fontWeightBlack: '900',
 }
 
 const cssVar = key => {

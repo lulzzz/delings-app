@@ -11,6 +11,7 @@ import React, {
 
 import NavigationBar from '../navigation/NavigationBar'
 import GalleryItem from './GalleryItem'
+import cssVar from '../../cssVar'
 
 class GalleryView extends Component {
 
@@ -43,14 +44,13 @@ class GalleryView extends Component {
 
     return (
       <View style={styles.container}>
-        <StatusBar hidden={false}/>
         <NavigationBar title='Delings'/>
-        <ScrollView>
+        <ScrollView style={styles.list}>
           <View style={styles.header}>
-            <Text style={styles.heading}>Hva trenger du?</Text>
-            <Text style={styles.subheading}>Si det med et bilde.</Text>
+            <Text style={styles.title}>Hva trenger du?</Text>
+            <Text style={styles.description}>Si det med et bilde.</Text>
           </View>
-          <View style={styles.categories}>
+          <View style={styles.grid}>
             {categories.map((item, i) => this.renderItem(item, i, width))}
           </View>
         </ScrollView>
@@ -80,24 +80,29 @@ const categories = [
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    backgroundColor: cssVar('windowBackground'),
+  },
+  list: {
+    backgroundColor: 'white',
   },
   header: {
   },
-  heading: {
+  title: {
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    fontSize: 20,
-    color: '#000',
+    color: cssVar('textColorPrimary'),
+    ...cssVar('fontTitle'),
   },
-  subheading: {
+  description: {
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    fontSize: 14,
-    color: '#000',
+    color: cssVar('textColorPrimary'),
+    ...cssVar('fontBody1'),
   },
-  categories: {
+  grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
   },

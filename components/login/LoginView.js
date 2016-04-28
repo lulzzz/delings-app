@@ -11,7 +11,6 @@ import React, {
 import RaisedButton from '../button/RaisedButton'
 import FlatButton from '../button/FlatButton'
 import FBLogin from '../facebook/FBLogin'
-
 import cssVar from '../../cssVar'
 
 class LoginView extends Component {
@@ -34,7 +33,6 @@ class LoginView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar hidden={true}/>
         <View style={styles.logoContainer}>
           <Image style={styles.logo} source={require('./img/delings-logo.png')}/>
         </View>
@@ -53,7 +51,7 @@ class LoginView extends Component {
             Vi deler ikke informasjon om deg med andre.
           </Text>
           <FlatButton handleButtonPress={this.handleSkipPress.bind(this)}
-              color='#FFF'>
+              color={cssVar('textColorPrimaryLight')}>
             Fortsett uten å logge inn
           </FlatButton>
         </View>
@@ -83,8 +81,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    fontSize: 25,
     color: cssVar('textColorPrimaryLight'),
+    ...cssVar('fontHeadline'),
   },
   actionsContainer: {
     flex: 1,
@@ -94,8 +92,8 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    fontSize: 14,
     color: cssVar('textColorSecondaryLight'),
+    ...cssVar('fontBody1')
   },
 })
 

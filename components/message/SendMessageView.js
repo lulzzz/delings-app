@@ -10,6 +10,7 @@ import React, {
 import NavigationBar from '../navigation/NavigationBar'
 import FloatingActionButton from '../button/FloatingActionButton'
 import FBMessenger from '../facebook/FBMessenger'
+import cssVar from '../../cssVar'
 
 class SendMessageView extends Component {
 
@@ -36,10 +37,10 @@ class SendMessageView extends Component {
         <NavigationBar title='Send melding' navIcon={true}/>
         <Image source={this.props.image} style={{width: width, height: width}}/>
         <View style={styles.caption}>
-          <Text style={styles.heading}>
+          <Text style={styles.title}>
             Trenger du noe til hus og hage?
           </Text>
-          <Text style={styles.subheading}>
+          <Text style={styles.description}>
             Send bildet med en hyggelig melding, og få hjelp av noen du kjenner.
           </Text>
         </View>
@@ -57,16 +58,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'space-between',
+    backgroundColor: cssVar('windowBackground'),
   },
   caption: {
   },
-  heading: {
-    fontSize: 20,
+  title: {
     textAlign: 'center',
+    color: cssVar('textColorPrimary'),
+    ...cssVar('fontTitle'),
   },
-  subheading: {
-    fontSize: 14,
+  description: {
     textAlign: 'center',
+    color: cssVar('textColorPrimary'),
+    ...cssVar('fontBody1'),
   },
   sendButtonContainer: {
     marginBottom: 16,

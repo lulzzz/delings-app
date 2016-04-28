@@ -14,10 +14,11 @@ import cssVar from './cssVar'
 
 const DelingsApp = () => (
   <View style={styles.container}>
-    <StatusBar backgroundColor={cssVar('colorPrimaryDark')}/>
+    <StatusBar backgroundColor='black'/>
     <Navigator
         initialRoute={routes.initialRoute}
         renderScene={routes.renderScene}
+        configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
       />
   </View>
 )

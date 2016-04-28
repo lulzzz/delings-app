@@ -2,14 +2,17 @@ import React, {
   PropTypes,
   StyleSheet,
   ToolbarAndroid,
+  ToastAndroid,
 } from 'react-native'
 
+import FBLogin from '../facebook/FBLogin'
 import cssVar from '../../cssVar'
 
 const handleActionSelected = position => {
   switch (position) {
     case 0:
-      console.warn('logout clicked')
+      FBLogin.logOut()
+        .then(success => ToastAndroid.show(success, ToastAndroid.LONG))
       break;
     default:
 
@@ -26,7 +29,7 @@ const NavigationBar = props => {
     <ToolbarAndroid onActionSelected={handleActionSelected}
         style={styles.toolbar}
         title={props.title}
-        titleColor={cssVar('textColorPrimaryLight')}
+        titleColor='white'
         navIcon={navIcon}
         overflowIcon={require('./img/ic_more_vert_white.png')}
         actions={[
