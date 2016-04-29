@@ -1,12 +1,10 @@
-import {
-  SELECT_CATEGORY,
-} from '../../actions'
+import * as types from '../../actions'
 
-import Routes from '../../routes'
+import * as navigation from '../navigation/NavigationActions'
 
 function selectCategory(name, image) {
   return {
-    type: SELECT_CATEGORY,
+    type: types.SELECT_CATEGORY,
     name,
     image
   }
@@ -15,6 +13,6 @@ function selectCategory(name, image) {
 export function navigateToSelectedItem(item, navigator) {
   return (dispatch, getState) => {
     dispatch(selectCategory(item.name, item.image))
-    navigator.push({ name: 'SendMessage', image: item.image })
+    navigation.goForward({ name: 'SendMessage', image: item.image })
   }
 }

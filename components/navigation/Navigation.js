@@ -5,24 +5,20 @@ import React, {
   View
 } from 'react-native'
 
-import LoginView from './components/login/LoginView'
-import GalleryContainer from './components/gallery/GalleryContainer'
-import SendMessageView from './components/message/SendMessageView'
+import LoginView from '../login/LoginView'
+import GalleryContainer from '../gallery/GalleryContainer'
+import SendMessageView from '../message/SendMessageView'
 
-var _navigator; // we fill this up upon on first navigation.
+import * as navigation from './NavigationActions'
 
 BackAndroid.addEventListener('hardwareBackPress', () => {
-  if (_navigator.getCurrentRoutes().length === 1  ) {
-     return false;
-  }
-  _navigator.pop();
-  return true;
+  return navigation.goBack()
 });
 
 class Navigation extends Component {
 
   renderScene(route, navigator) {
-    _navigator = navigator
+    navigation.setNavigator(navigator)
 
     switch (route.name) {
       case 'Login':
@@ -36,12 +32,21 @@ class Navigation extends Component {
     }
   }
 
+  configureScene(route, routeStack) {
+    switch (route.name) {
+      case 'Gallery':
+        return Navigator.SceneConfigs.FadeAndroid
+      default:
+        return Navigator.SceneConfigs.PushFromRight
+    }
+  }
+
   render() {
     return (
       <Navigator
           initialRoute={{ name: 'Login' }}
           renderScene={this.renderScene}
-          configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
+          configureScene={this.configureScene}
         />
     )
   }

@@ -2,13 +2,12 @@ import React, {
   Component,
   StyleSheet,
   View,
-  Navigator,
   StatusBar,
 } from 'react-native'
 
 import { connect } from 'react-redux'
 
-import Navigation from '../routes'
+import Navigation from './navigation/Navigation'
 
 class App extends Component {
 

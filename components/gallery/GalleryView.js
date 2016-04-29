@@ -47,18 +47,16 @@ const styles = StyleSheet.create({
   header: {
   },
   title: {
+    ...cssVar('fontTitle'),
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    color: cssVar('textColorPrimary'),
-    ...cssVar('fontTitle')
   },
   description: {
+    ...cssVar('fontBody1'),
     marginVertical: 10,
     marginHorizontal: 20,
     textAlign: 'center',
-    color: cssVar('textColorPrimary'),
-    ...cssVar('fontBody1')
   },
   grid: {
     flexDirection: 'row',

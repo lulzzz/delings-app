@@ -63,14 +63,12 @@ const styles = StyleSheet.create({
   caption: {
   },
   title: {
-    textAlign: 'center',
-    color: cssVar('textColorPrimary'),
     ...cssVar('fontTitle'),
+    textAlign: 'center',
   },
   description: {
-    textAlign: 'center',
-    color: cssVar('textColorPrimary'),
     ...cssVar('fontBody1'),
+    textAlign: 'center',
   },
   sendButtonContainer: {
     marginBottom: 16,

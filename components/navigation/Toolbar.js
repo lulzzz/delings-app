@@ -8,6 +8,8 @@ import React, {
 import FBLogin from '../facebook/FBLogin'
 import cssVar from '../../cssVar'
 
+import * as navigation from './NavigationActions'
+
 const handleActionSelected = position => {
   switch (position) {
     case 0:
@@ -26,12 +28,13 @@ const Toolbar = props => {
                     : require('./img/delings-icon.png')
 
   return (
-    <ToolbarAndroid onActionSelected={handleActionSelected}
-        style={styles.toolbar}
+    <ToolbarAndroid style={styles.toolbar}
         title={props.title}
         titleColor='white'
         navIcon={navIcon}
+        onIconClicked={navigation.goBack}
         overflowIcon={require('./img/ic_more_vert_white.png')}
+        onActionSelected={handleActionSelected}
         actions={[
           {
             title: 'Logg ut',

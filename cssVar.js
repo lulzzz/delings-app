@@ -3,7 +3,7 @@ import React, {
   PixelRatio,
 } from 'react-native'
 
-const cssVarConfig = {
+const customProps = {
   // colorPrimary: 'rgb(73,188,234)', // #49BCEA
   // colorPrimaryDark: 'rgb(73,188,234)',
   // colorPrimaryLight: 'rgb(73,188,234)',
@@ -28,73 +28,88 @@ const cssVarConfig = {
   dividerColorLight: 'rgba(255,255,255,0.12)',
   windowBackground: '#FAFAFA',
   windowBackgroundLight: '#303030',
-  divider: {
-    backgroundColor: 'rgba(0,0,0,0.12)',
-    //height: 1 / PixelRatio.get(), // thinnest possible line
-    height: StyleSheet.hairlineWidth,
-  },
-  dividerLight: {
-    backgroundColor: 'rgba(255,255,255,0.12)',
-    //height: 1 / PixelRatio.get(), // thinnest possible line
-    height: StyleSheet.hairlineWidth,
-  },
-  fontDisplay4: {
-    fontSize: 112,
-    fontWeight: '100',
-  },
-  fontDisplay3: {
-    fontSize: 56,
-    fontWeight: '400',
-  },
-  fontDisplay2: {
-    fontSize: 45,
-    fontWeight: '400',
-    lineHeight: 48,
-  },
-  fontDisplay1: {
-    fontSize: 34,
-    fontWeight: '400',
-    lineHeight: 40,
-  },
-  fontHeadline: {
-    fontSize: 24,
-    fontWeight: '400',
-    lineHeight: 32,
-  },
-  fontTitle: {
-    fontSize: 20,
-    fontWeight: '500',
-    lineHeight: 28,
-  },
-  fontSubheading: {
-    fontSize: 16,
-    fontWeight: '400',
-    lineHeight: 24,
-  },
-  fontBody2: {
-    fontSize: 14,
-    fontWeight: '500',
-    lineHeight: 24,
-  },
-  fontBody1: {
-    fontSize: 14,
-    fontWeight: '400',
-    lineHeight: 20,
-  },
-  fontCaption: {
-    fontSize: 12,
-    fontWeight: '400',
-  },
-  fontButton: {
-    fontSize: 14,
-    fontWeight: '500',
-  },
   fontWeightThin: '100',
   fontWeightLight: '300',
   fontWeightRegular: '400',
   fontWeightMedium: '500',
   fontWeightBold: '700',
   fontWeightBlack: '900',
+}
+
+const cssVarConfig = {
+  ...customProps,
+  divider: {
+    backgroundColor: customProps.dividerColor,
+    //height: 1 / PixelRatio.get(), // thinnest possible line
+    height: StyleSheet.hairlineWidth,
+  },
+  dividerLight: {
+    backgroundColor: customProps.dividerColorLight,
+    //height: 1 / PixelRatio.get(), // thinnest possible line
+    height: StyleSheet.hairlineWidth,
+  },
+  fontDisplay4: {
+    fontSize: 112,
+    fontWeight: customProps.fontWeightThin,
+    color: customProps.textColorSecondary,
+  },
+  fontDisplay3: {
+    fontSize: 56,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorSecondary,
+  },
+  fontDisplay2: {
+    fontSize: 45,
+    lineHeight: 48,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorSecondary,
+  },
+  fontDisplay1: {
+    fontSize: 34,
+    lineHeight: 40,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorSecondary,
+  },
+  fontHeadline: {
+    fontSize: 24,
+    lineHeight: 32,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorPrimary,
+  },
+  fontTitle: {
+    fontSize: 20,
+    lineHeight: 28,
+    fontWeight: customProps.fontWeightMedium,
+    color: customProps.textColorPrimary,
+  },
+  fontSubheading: {
+    fontSize: 16,
+    lineHeight: 24,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorPrimary,
+  },
+  fontBody2: {
+    fontSize: 14,
+    fontSize: 14,
+    fontWeight: customProps.fontWeightMedium,
+    color: customProps.textColorPrimary,
+  },
+  fontBody1: {
+    fontSize: 14,
+    lineHeight: 20,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorPrimary,
+  },
+  fontCaption: {
+    fontSize: 12,
+    fontWeight: customProps.fontWeightRegular,
+    color: customProps.textColorSecondary,
+  },
+  fontButton: {
+    fontSize: 14,
+    fontWeight: customProps.fontWeightMedium,
+    color: customProps.textColorPrimary,
+  },
 }
 
 const cssVar = key => {
