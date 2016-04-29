@@ -30,7 +30,7 @@ class SendMessageView extends Component {
   }
 
   render() {
-    const { height, width } = Dimensions.get('window');
+    const { height, width } = Dimensions.get('window')
 
     return (
       <View style={styles.container}>

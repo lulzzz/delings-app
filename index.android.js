@@ -1,32 +1,18 @@
 import React, {
-  AppRegistry,
-  Component,
-  StyleSheet,
-  Text,
-  Image,
-  View,
-  Navigator,
-  StatusBar,
+  AppRegistry
 } from 'react-native'
 
-import routes from './routes'
-import cssVar from './cssVar'
+import { Provider } from 'react-redux'
+
+import configureStore from './store/configureStore'
+import App from './components/App'
+
+const store = configureStore()
 
 const DelingsApp = () => (
-  <View style={styles.container}>
-    <StatusBar backgroundColor='black'/>
-    <Navigator
-        initialRoute={routes.initialRoute}
-        renderScene={routes.renderScene}
-        configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
-      />
-  </View>
+  <Provider store={store}>
+    <App />
+  </Provider>
 )
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-})
 
 AppRegistry.registerComponent('DelingsApp', () => DelingsApp)

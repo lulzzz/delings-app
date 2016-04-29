@@ -1,29 +1,50 @@
 import React, {
-  View,
+  Component,
+  Navigator,
+  BackAndroid,
+  View
 } from 'react-native'
 
 import LoginView from './components/login/LoginView'
-import GalleryView from './components/gallery/GalleryView'
+import GalleryContainer from './components/gallery/GalleryContainer'
 import SendMessageView from './components/message/SendMessageView'
 
-const initialRoute = {
-  name: 'Login'
-}
+var _navigator; // we fill this up upon on first navigation.
 
-const renderScene = (route, navigator) => {
-  switch (route.name) {
-    case 'Login':
-      return <LoginView navigator={navigator} />
-    case 'Gallery':
-      return <GalleryView navigator={navigator} />
-    case 'SendMessage':
-      return <SendMessageView navigator={navigator} image={route.image} />
-    default:
-      return <View />
+BackAndroid.addEventListener('hardwareBackPress', () => {
+  if (_navigator.getCurrentRoutes().length === 1  ) {
+     return false;
+  }
+  _navigator.pop();
+  return true;
+});
+
+class Navigation extends Component {
+
+  renderScene(route, navigator) {
+    _navigator = navigator
+
+    switch (route.name) {
+      case 'Login':
+        return <LoginView navigator={navigator} />
+      case 'Gallery':
+        return <GalleryContainer navigator={navigator} />
+      case 'SendMessage':
+        return <SendMessageView navigator={navigator} image={route.image} />
+      default:
+        return <View />
+    }
+  }
+
+  render() {
+    return (
+      <Navigator
+          initialRoute={{ name: 'Login' }}
+          renderScene={this.renderScene}
+          configureScene={(route, routeStack) => Navigator.SceneConfigs.PushFromRight}
+        />
+    )
   }
 }
 
-export default {
-  renderScene,
-  initialRoute
-}
+export default Navigation
