@@ -8,6 +8,7 @@ import React, {
 
 import cssVar from '../../cssVar'
 
+// shouldComponentUpdate = false
 const GalleryItem = ({ name, image, width, handleItemPress }) => (
   <Image source={image}
       resizeMode={Image.resizeMode.cover}
