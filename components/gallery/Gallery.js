@@ -1,6 +1,9 @@
 import { connect } from 'react-redux'
 
-import { navigateToSelectedItem } from './GalleryActions'
+import {
+  navigateToSelectedItem
+} from './GalleryActions'
+
 import GalleryView from './GalleryView'
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,14 +15,14 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     handleItemPress: item => {
-      dispatch(navigateToSelectedItem(item, ownProps.navigator))
+      dispatch(navigateToSelectedItem(item))
     }
   }
 }
 
-const GalleryContainer = connect(
+const Gallery = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(GalleryView)
 
-export default GalleryContainer
+export default Gallery

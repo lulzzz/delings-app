@@ -1,1 +1,3 @@
+export const LOGGED_IN = 'LOGGED_IN'
+export const SET_NAVIGATOR = 'SET_NAVIGATOR'
 export const SELECT_CATEGORY = 'SELECT_CATEGORY'

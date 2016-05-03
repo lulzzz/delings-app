@@ -9,19 +9,19 @@ import React, {
 import cssVar from '../../cssVar'
 
 // shouldComponentUpdate = false
-const GalleryItem = ({ name, image, width, handleItemPress }) => (
-  <Image source={image}
+const GalleryItem = props => (
+  <Image source={props.image}
       resizeMode={Image.resizeMode.cover}
       style={[
         styles.thumb,
         {
-          width: width,
-          height: width,
+          width: props.width,
+          height: props.width,
         },
       ]}>
     <TouchableOpacity style={styles.overlay}
-        onPress={handleItemPress}>
-      <Text style={styles.label}>{name}</Text>
+        onPress={props.handleItemPress}>
+      <Text style={styles.label}>{props.name}</Text>
     </TouchableOpacity>
   </Image>
 )

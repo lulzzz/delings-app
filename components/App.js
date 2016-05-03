@@ -7,15 +7,17 @@ import React, {
 
 import { connect } from 'react-redux'
 
-import Navigation from './navigation/Navigation'
+import NavigationContainer from './navigation/NavigationContainer'
 
 class App extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar backgroundColor='black'/>
-        <Navigation />
+        <StatusBar
+            backgroundColor='black'
+            barStyle='light-content'/>
+        <NavigationContainer />
       </View>
     )
   }

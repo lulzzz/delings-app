@@ -1,5 +1,7 @@
 import React, {
   Component,
+  PropTypes,
+  StyleSheet,
   Navigator,
   BackAndroid,
   View
@@ -8,6 +10,7 @@ import React, {
 import LoginView from '../login/LoginView'
 import GalleryContainer from '../gallery/GalleryContainer'
 import SendMessageView from '../message/SendMessageView'
+import cssVar from '../../cssVar'
 
 import * as navigation from './NavigationActions'
 
@@ -18,8 +21,6 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
 class Navigation extends Component {
 
   renderScene(route, navigator) {
-    navigation.setNavigator(navigator)
-
     switch (route.name) {
       case 'Login':
         return <LoginView navigator={navigator} />
@@ -47,9 +48,21 @@ class Navigation extends Component {
           initialRoute={{ name: 'Login' }}
           renderScene={this.renderScene}
           configureScene={this.configureScene}
+          sceneStyle={styles.scene}
+          ref={navigation.setNavigator}
         />
     )
   }
+}
+
+const styles = StyleSheet.create({
+  scene: {
+    backgroundColor: cssVar('windowBackground')
+  },
+})
+
+Navigation.propTypes = {
+  handleHardwareBackPress: PropTypes.func.isRequired,
 }
 
 export default Navigation

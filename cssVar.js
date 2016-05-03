@@ -90,7 +90,7 @@ const cssVarConfig = {
   },
   fontBody2: {
     fontSize: 14,
-    fontSize: 14,
+    lineHeight: 24,
     fontWeight: customProps.fontWeightMedium,
     color: customProps.textColorPrimary,
   },

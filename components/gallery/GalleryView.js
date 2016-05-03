@@ -5,14 +5,13 @@ import React, {
   View,
   ScrollView,
   Dimensions,
-  ToolbarAndroid,
 } from 'react-native'
 
 import Toolbar from '../navigation/Toolbar'
 import GalleryItem from './GalleryItem'
 import cssVar from '../../cssVar'
 
-const GalleryView = ({ categories, handleItemPress, navigator }) => {
+const GalleryView = props => {
   const { height, width } = Dimensions.get('window')
 
   return (
@@ -24,11 +23,12 @@ const GalleryView = ({ categories, handleItemPress, navigator }) => {
           <Text style={styles.description}>Si det med et bilde.</Text>
         </View>
         <View style={styles.grid}>
-          {categories.map((item, i) => (
+          {props.categories.map((item, i) => (
             <GalleryItem key={i}
-                handleItemPress={() => handleItemPress(item, navigator)}
+                handleItemPress={() => props.handleItemPress(item)}
                 width={0.5 * width}
-                {...item}/>
+                {...item}
+              />
           ))}
         </View>
       </ScrollView>
@@ -39,7 +39,6 @@ const GalleryView = ({ categories, handleItemPress, navigator }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: cssVar('windowBackground')
   },
   list: {
     backgroundColor: 'white'
@@ -70,7 +69,6 @@ GalleryView.propTypes = {
     image: PropTypes.number.isRequired
   }).isRequired).isRequired,
   handleItemPress: PropTypes.func.isRequired,
-  navigator: PropTypes.object.isRequired
 }
 
 export default GalleryView

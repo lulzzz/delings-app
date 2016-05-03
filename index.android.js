@@ -9,6 +9,10 @@ import App from './components/App'
 
 const store = configureStore()
 
+// init navigator
+// init isFirstTimeUse
+// init isLoggedIn?
+
 const DelingsApp = () => (
   <Provider store={store}>
     <App />

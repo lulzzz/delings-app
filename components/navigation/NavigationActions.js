@@ -1,19 +1,25 @@
-var _navigator; // we fill this up upon on first navigation.
+import * as types from '../../actions'
 
-export const setNavigator = navigator => {
-  if (!_navigator) {
-    _navigator = navigator
+export function setNavigator(navigator) {
+  return {
+    type: types.SET_NAVIGATOR,
+    navigator
   }
 }
 
-export const goBack = () => {
-  if (_navigator.getCurrentRoutes().length <= 2  ) {
-     return false;
+export function goForward(route) {
+  return (dispatch, getState) => {
+    getState().navigation.navigator.push(route)
   }
-  _navigator.pop();
-  return true;
 }
 
-export const goForward = route => {
-  _navigator.push(route)
+export function goBack() {
+  return (dispatch, getState) => {
+    const navigator = getState().navigation.navigator
+    if (navigator.getCurrentRoutes().length <= 2  ) {
+       return false;
+    }
+    navigator.pop();
+    return true;
+  }
 }

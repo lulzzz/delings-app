@@ -1,6 +1,7 @@
 import * as types from '../../actions'
 
 import * as navigation from '../navigation/NavigationActions'
+import routes from '../../routes'
 
 function selectCategory(name, image) {
   return {
@@ -10,9 +11,9 @@ function selectCategory(name, image) {
   }
 }
 
-export function navigateToSelectedItem(item, navigator) {
+export function navigateToSelectedItem(item) {
   return (dispatch, getState) => {
     dispatch(selectCategory(item.name, item.image))
-    navigation.goForward({ name: 'SendMessage', image: item.image })
+    dispatch(navigation.goForward(routes.SendMessage))
   }
 }
