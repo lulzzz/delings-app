@@ -18,6 +18,9 @@ Installing dependencies:
 Starting the app on Android:
 - `react-native run-android`
 
+Starting the app on iOS:
+- `react-native run-ios`
+
 ## Release
 Follow these guides:
 - https://facebook.github.io/react-native/docs/signed-apk-android.html#content

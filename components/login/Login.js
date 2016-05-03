@@ -9,8 +9,8 @@ import LoginView from './LoginView'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    isFirstTimeUse: state.login.isFirstTimeUse,
-    isLoggedIn: state.login.isLoggedIn,
+    isFirstTimeUse: state.login.session.isFirstTimeUse,
+    isLoggedIn: state.login.session.isLoggedIn,
   }
 }
 

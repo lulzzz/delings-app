@@ -8,7 +8,7 @@ import React, {
 import routes from '../../routes'
 import cssVar from '../../cssVar'
 
-const Navigation = props => (
+const NavigationView = props => (
   <NavigatorIOS style={styles.container}
       barTintColor={cssVar('colorPrimary')}
       tintColor='white'
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   },
 })
 
-Navigation.propTypes = {
+NavigationView.propTypes = {
   setNavigator: PropTypes.func.isRequired,
 }
 
-export default Navigation
+export default NavigationView

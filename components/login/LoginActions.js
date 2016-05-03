@@ -16,8 +16,9 @@ export function logIntoFacebook() {
     FBLogin.logIn()
       .then(profile => dispatch(logIn(profile)))
       //.then(ToastAndroid.show(`Hei, ${profile['first_name']}!`, ToastAndroid.LONG))
-      //.catch(ToastAndroid.show(error.message, ToastAndroid.LONG))
       .then(navigation.goForward(routes.Gallery))
+      //.catch(ToastAndroid.show(error.message, ToastAndroid.LONG))
+      .catch(error => console.warn(error))
     }
 }
 

@@ -18,7 +18,7 @@ BackAndroid.addEventListener('hardwareBackPress', () => {
   return navigation.goBack()
 });
 
-class Navigation extends Component {
+class NavigationView extends Component {
 
   renderScene(route, navigator) {
     switch (route.name) {
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
   },
 })
 
-Navigation.propTypes = {
+NavigationView.propTypes = {
   handleHardwareBackPress: PropTypes.func.isRequired,
 }
 
-export default Navigation
+export default NavigationView

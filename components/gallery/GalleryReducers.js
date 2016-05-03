@@ -25,8 +25,6 @@ const initialState = {
 
 function categories(state = initialState.categories, action) {
   switch (action.type) {
-    case types.SELECT_CATEGORY:
-      // do something
     default:
       return state
   }

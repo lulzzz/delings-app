@@ -3,10 +3,10 @@ import * as types from '../../actions'
 import * as navigation from '../navigation/NavigationActions'
 import routes from '../../routes'
 
-function selectCategory(name, image) {
+function selectCategory(category, image) {
   return {
     type: types.SELECT_CATEGORY,
-    name,
+    category,
     image
   }
 }

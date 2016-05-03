@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   StyleSheet,
   View,
   Image,
@@ -73,5 +74,12 @@ const styles = StyleSheet.create({
     color: cssVar('textColorSecondaryLight'),
   },
 })
+
+LoginView.propTypes = {
+  isFirstTimeUse: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  handleLoginPress: PropTypes.func.isRequired,
+  handleSkipPress: PropTypes.func.isRequired,
+}
 
 export default LoginView

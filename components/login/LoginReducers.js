@@ -3,11 +3,13 @@ import { combineReducers } from 'redux'
 import * as types from '../../actions'
 
 const initialState = {
-  isFirstTimeUse: false,
-  isLoggedIn: false,
+  session: {
+    isFirstTimeUse: false,
+    isLoggedIn: false,
+  }
 }
 
-function login(state = initialState, action) {
+function session(state = initialState.session, action) {
   switch (action.type) {
     default:
       return state
@@ -15,5 +17,5 @@ function login(state = initialState, action) {
 }
 
 export default combineReducers({
-  login
+  session
 })

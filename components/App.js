@@ -1,5 +1,4 @@
 import React, {
-  Component,
   StyleSheet,
   View,
   StatusBar,
@@ -7,21 +6,16 @@ import React, {
 
 import { connect } from 'react-redux'
 
-import NavigationContainer from './navigation/NavigationContainer'
+import Navigation from './navigation/Navigation'
 
-class App extends Component {
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <StatusBar
-            backgroundColor='black'
-            barStyle='light-content'/>
-        <NavigationContainer />
-      </View>
-    )
-  }
-}
+const App = () => (
+  <View style={styles.container}>
+    <StatusBar
+        backgroundColor='black'
+        barStyle='light-content'/>
+    <Navigation />
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {

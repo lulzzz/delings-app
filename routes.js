@@ -1,6 +1,6 @@
 import Login from './components/login/Login'
 import Gallery from './components/gallery/Gallery'
-import SendMessageView from './components/message/SendMessageView'
+import SendMessage from './components/message/SendMessage'
 
 const routes = {
 
@@ -16,7 +16,7 @@ const routes = {
   },
 
   SendMessage: {
-    component: SendMessageView,
+    component: SendMessage,
     title: 'Send melding',
   },
 

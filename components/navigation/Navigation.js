@@ -5,7 +5,7 @@ import {
   goBack
 } from './NavigationActions'
 
-import Navigation from './Navigation'
+import NavigationView from './NavigationView'
 
 const mapStateToProps = (state, ownProps) => {
   return {}
@@ -22,9 +22,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   }
 }
 
-const NavigationContainer = connect(
+const Navigation = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navigation)
+)(NavigationView)
 
-export default NavigationContainer
+export default Navigation
