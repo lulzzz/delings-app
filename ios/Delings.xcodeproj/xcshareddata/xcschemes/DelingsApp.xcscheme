@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
    LastUpgradeVersion = "0620"
-   version = "1.3">
+   version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "DelingsApp.app"
-               BlueprintName = "DelingsApp"
-               ReferencedContainer = "container:DelingsApp.xcodeproj">
+               BlueprintName = "Delings"
+               ReferencedContainer = "container:Delings.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,27 +29,27 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "DelingsAppTests.xctest"
-               BlueprintName = "DelingsAppTests"
-               ReferencedContainer = "container:DelingsApp.xcodeproj">
+               BuildableName = "Delings.xctest"
+               BlueprintName = "DelingsTests"
+               ReferencedContainer = "container:Delings.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "DelingsAppTests.xctest"
-               BlueprintName = "DelingsAppTests"
-               ReferencedContainer = "container:DelingsApp.xcodeproj">
+               BuildableName = "Delings.xctest"
+               BlueprintName = "DelingsTests"
+               ReferencedContainer = "container:Delings.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -58,19 +58,22 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "DelingsApp.app"
-            BlueprintName = "DelingsApp"
-            ReferencedContainer = "container:DelingsApp.xcodeproj">
+            BlueprintName = "Delings"
+            ReferencedContainer = "container:Delings.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -78,18 +81,18 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "DelingsApp.app"
-            BlueprintName = "DelingsApp"
-            ReferencedContainer = "container:DelingsApp.xcodeproj">
+            BlueprintName = "Delings"
+            ReferencedContainer = "container:Delings.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -97,8 +100,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "DelingsApp.app"
-            BlueprintName = "DelingsApp"
-            ReferencedContainer = "container:DelingsApp.xcodeproj">
+            BlueprintName = "Delings"
+            ReferencedContainer = "container:Delings.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -108,5 +111,24 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = ""
+               shellToInvoke = "/usr/local/bin/puck &quot;${ARCHIVE_PATH}&quot;">
+               <EnvironmentBuildable>
+                  <BuildableReference
+                     BuildableIdentifier = "primary"
+                     BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
+                     BuildableName = "Delings.app"
+                     BlueprintName = "Delings"
+                     ReferencedContainer = "container:Delings.xcodeproj">
+                  </BuildableReference>
+               </EnvironmentBuildable>
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>
