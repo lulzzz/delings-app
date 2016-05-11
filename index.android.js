@@ -1,5 +1,6 @@
-import React, {
-  AppRegistry
+import React from 'react'
+import {
+  AppRegistry,
 } from 'react-native'
 
 import { Provider } from 'react-redux'
@@ -13,10 +14,10 @@ const store = configureStore()
 // init isFirstTimeUse
 // init isLoggedIn?
 
-const DelingsApp = () => (
+const Delings = () => (
   <Provider store={store}>
     <App />
   </Provider>
 )
 
-AppRegistry.registerComponent('DelingsApp', () => DelingsApp)
+AppRegistry.registerComponent('Delings', () => Delings)
