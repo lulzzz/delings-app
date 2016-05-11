@@ -624,6 +624,7 @@
 				INFOPLIST_FILE = Delings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = no.delings.app.Delings;
 				PRODUCT_NAME = Delings;
 			};
 			name = Debug;
@@ -641,6 +642,7 @@
 				INFOPLIST_FILE = Delings/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = no.delings.app.Delings;
 				PRODUCT_NAME = Delings;
 			};
 			name = Release;
