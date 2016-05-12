@@ -46,5 +46,5 @@ Testing the release build:
 
 ### iOS
 Follow these guides:
+- https://facebook.github.io/react-native/docs/running-on-device-ios.html
 - https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/ConfiguringYourApp/ConfiguringYourApp.html#//apple_ref/doc/uid/TP40012582-CH28-SW1
-- https://support.hockeyapp.net/kb/client-integration-ios-mac-os-x-tvos/how-to-upload-to-hockeyapp-from-mac-os-x
