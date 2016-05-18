@@ -4,52 +4,41 @@ import React, {
   StyleSheet,
   Navigator,
   BackAndroid,
-  View
 } from 'react-native'
 
-import LoginView from '../login/LoginView'
-import GalleryContainer from '../gallery/GalleryContainer'
-import SendMessageView from '../message/SendMessageView'
-import cssVar from '../../cssVar'
-
 import * as navigation from './NavigationActions'
-
-BackAndroid.addEventListener('hardwareBackPress', () => {
-  return navigation.goBack()
-});
+import routes from '../../routes'
+import cssVar from '../../cssVar'
 
 class NavigationView extends Component {
 
+  constructor(props) {
+    super(props)
+    BackAndroid.addEventListener('hardwareBackPress',
+        props.handleHardwareBackPress)
+  }
+
   renderScene(route, navigator) {
-    switch (route.name) {
-      case 'Login':
-        return <LoginView navigator={navigator} />
-      case 'Gallery':
-        return <GalleryContainer navigator={navigator} />
-      case 'SendMessage':
-        return <SendMessageView navigator={navigator} image={route.image} />
-      default:
-        return <View />
-    }
+    return <route.component route={route} navigator={navigator} {...route.passProps} />
   }
 
   configureScene(route, routeStack) {
-    switch (route.name) {
-      case 'Gallery':
+    switch (route.component) {
+      case routes.Gallery.component:
         return Navigator.SceneConfigs.FadeAndroid
       default:
-        return Navigator.SceneConfigs.PushFromRight
+        return Navigator.SceneConfigs.FloatFromRight
     }
   }
 
   render() {
     return (
       <Navigator
-          initialRoute={{ name: 'Login' }}
+          initialRoute={routes.Login}
           renderScene={this.renderScene}
           configureScene={this.configureScene}
           sceneStyle={styles.scene}
-          ref={navigation.setNavigator}
+          ref={this.props.setNavigator}
         />
     )
   }
@@ -62,6 +51,7 @@ const styles = StyleSheet.create({
 })
 
 NavigationView.propTypes = {
+  setNavigator: PropTypes.func.isRequired,
   handleHardwareBackPress: PropTypes.func.isRequired,
 }
 

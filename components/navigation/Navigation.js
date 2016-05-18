@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(setNavigator(navigator))
     },
     handleHardwareBackPress: () => {
-      dispatch(goBack())
+      return dispatch(goBack())
     }
   }
 }

@@ -1,4 +1,4 @@
-# DelingsApp
+# Delings
 
 ## Setup
 Follow these guides:
