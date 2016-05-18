@@ -1,6 +1,6 @@
 import React, {
+  //PixelRatio,
   StyleSheet,
-  PixelRatio,
 } from 'react-native'
 
 const customProps = {
