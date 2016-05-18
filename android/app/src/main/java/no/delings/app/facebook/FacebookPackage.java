@@ -17,7 +17,6 @@ public class FacebookPackage implements ReactPackage {
     public List<NativeModule> createNativeModules(
             ReactApplicationContext reactContext) {
         return Arrays.<NativeModule>asList(
-            new LoginModule(reactContext),
             new MessengerModule(reactContext)
         );
     }
