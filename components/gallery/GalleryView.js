@@ -7,7 +7,7 @@ import React, {
   Dimensions,
 } from 'react-native'
 
-import Toolbar from '../navigation/Toolbar'
+import Toolbar from '../toolbar/Toolbar'
 import GalleryItem from './GalleryItem'
 import cssVar from '../../cssVar'
 
@@ -16,7 +16,7 @@ const GalleryView = props => {
 
   return (
     <View style={styles.container}>
-      <Toolbar title='Delings'/>
+      <Toolbar title={props.route.title} />
       <ScrollView style={styles.list}>
         <View style={styles.header}>
           <Text style={styles.title}>Hva trenger du?</Text>

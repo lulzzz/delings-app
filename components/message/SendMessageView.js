@@ -7,7 +7,7 @@ import React, {
   Text,
 } from 'react-native'
 
-import Toolbar from '../navigation/Toolbar'
+import Toolbar from '../toolbar/Toolbar'
 import FloatingActionButton from '../button/FloatingActionButton'
 import cssVar from '../../cssVar'
 
@@ -16,7 +16,7 @@ const SendMessageView = props => {
 
   return (
     <View style={styles.container}>
-      <Toolbar title='Send melding' navIcon={true}/>
+      <Toolbar title={props.route.title} navIcon={true}/>
       <Image source={props.image} style={{width: width, height: width}}/>
       <View style={styles.caption}>
         <Text style={styles.title}>

@@ -11,6 +11,16 @@ const initialState = {
 
 function session(state = initialState.session, action) {
   switch (action.type) {
+    case types.LOGGED_IN:
+      return {
+        ...state,
+        isLoggedIn: true,
+      }
+    case types.LOGGED_OUT:
+      return {
+        ...state,
+        isLoggedIn: false,
+      }
     default:
       return state
   }

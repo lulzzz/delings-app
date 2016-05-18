@@ -6,7 +6,6 @@ import React, {
   BackAndroid,
 } from 'react-native'
 
-import * as navigation from './NavigationActions'
 import routes from '../../routes'
 import cssVar from '../../cssVar'
 
@@ -14,12 +13,16 @@ class NavigationView extends Component {
 
   constructor(props) {
     super(props)
-    BackAndroid.addEventListener('hardwareBackPress',
-        props.handleHardwareBackPress)
+    BackAndroid.addEventListener('hardwareBackPress', () => {
+      return props.handleHardwareBackPress()
+    })
   }
 
   renderScene(route, navigator) {
-    return <route.component route={route} navigator={navigator} {...route.passProps} />
+    return <route.component
+        route={route}
+        navigator={navigator}
+        {...route.passProps} />
   }
 
   configureScene(route, routeStack) {

@@ -2,26 +2,11 @@ import React, {
   PropTypes,
   StyleSheet,
   ToolbarAndroid,
-  ToastAndroid,
 } from 'react-native'
 
-import FBLogin from '../facebook/FBLogin'
 import cssVar from '../../cssVar'
 
-import * as navigation from './NavigationActions'
-
-const handleActionSelected = position => {
-  switch (position) {
-    case 0:
-      FBLogin.logOut()
-        .then(success => ToastAndroid.show(success, ToastAndroid.LONG))
-      break;
-    default:
-
-  }
-}
-
-const Toolbar = props => {
+const ToolbarView = props => {
 
   const navIcon = props.navIcon
                     ? require('./img/ic_arrow_back_white.png')
@@ -32,9 +17,9 @@ const Toolbar = props => {
         title={props.title}
         titleColor='white'
         navIcon={navIcon}
-        onIconClicked={navigation.goBack}
+        onIconClicked={props.handleIconClicked}
         overflowIcon={require('./img/ic_more_vert_white.png')}
-        onActionSelected={handleActionSelected}
+        onActionSelected={props.handleActionSelected}
         actions={[
           {
             title: 'Logg ut',
@@ -51,9 +36,11 @@ const styles = StyleSheet.create({
   },
 })
 
-Toolbar.propTypes = {
+ToolbarView.propTypes = {
   title: PropTypes.string,
   navIcon: PropTypes.bool,
+  handleIconClicked: PropTypes.func.isRequired,
+  handleActionSelected: PropTypes.func.isRequired,
 }
 
-export default Toolbar
+export default ToolbarView
